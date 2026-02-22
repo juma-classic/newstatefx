@@ -32,6 +32,7 @@ const TradeAnimation = observer(({ className, should_show_overlay }: TTradeAnima
     const { account_status } = client;
     const cashier_validation = account_status?.cashier_validation;
     const [shouldDisable, setShouldDisable] = React.useState(false);
+    const [isRetracted, setIsRetracted] = React.useState(false);
     const is_unavailable_for_payment_agent = cashier_validation?.includes('WithdrawServiceUnavailableForPA');
 
     // perform self-exclusion checks which will be stored under the self-exclusion-store
@@ -92,7 +93,16 @@ const TradeAnimation = observer(({ className, should_show_overlay }: TTradeAnima
     const getTabName = (index: number) => TAB_NAMES[index];
 
     return (
-        <div className={classNames('animation__wrapper', className)}>
+        <div className={classNames('animation__wrapper', className, { 'animation__wrapper--retracted': isRetracted })}>
+            {/* Toggle button for retracting/expanding */}
+            <button
+                className="animation__toggle-button"
+                onClick={() => setIsRetracted(!isRetracted)}
+                title={isRetracted ? 'Show controls' : 'Hide controls'}
+            >
+                {isRetracted ? '▶' : '◀'}
+            </button>
+            
             <Button
                 is_disabled={is_disabled && !is_unavailable_for_payment_agent}
                 className={button_props.class}

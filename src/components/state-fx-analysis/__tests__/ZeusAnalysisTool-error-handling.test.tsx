@@ -1,7 +1,7 @@
 import React from 'react';
 import fc from 'fast-check';
 import { render, screen, waitFor } from '@testing-library/react';
-import { ZeusAnalysisTool } from '../ZeusAnalysisTool';
+import { StateFXAnalysisTool } from '../StateFXAnalysisTool';
 
 // Mock WebSocket
 class MockWebSocket {
@@ -23,7 +23,7 @@ class MockWebSocket {
     }
 }
 
-describe('ZeusAnalysisTool - Error Handling Property Tests', () => {
+describe('StateFXAnalysisTool - Error Handling Property Tests', () => {
     let originalWebSocket: typeof WebSocket;
     
     beforeEach(() => {
@@ -65,7 +65,7 @@ describe('ZeusAnalysisTool - Error Handling Property Tests', () => {
                     // Render component - should not throw
                     let didThrow = false;
                     try {
-                        const { container } = render(<ZeusAnalysisTool />);
+                        const { container } = render(<StateFXAnalysisTool />);
                         
                         // Component should render something (loading skeleton or error)
                         expect(container.firstChild).toBeTruthy();
@@ -117,7 +117,7 @@ describe('ZeusAnalysisTool - Error Handling Property Tests', () => {
                     
                     (global as any).WebSocket = InsufficientDataWebSocket;
                     
-                    const { container } = render(<ZeusAnalysisTool />);
+                    const { container } = render(<StateFXAnalysisTool />);
                     
                     // Should render without crashing
                     expect(container.firstChild).toBeTruthy();

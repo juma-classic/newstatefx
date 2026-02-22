@@ -11,7 +11,7 @@ import { LoadingSkeleton } from './LoadingSkeleton';
 
 import { ProbabilityPredictionCard } from './ProbabilityPredictionCard';
 import { RecentTicksList } from './RecentTicksList';
-import './ZeusAnalysisTool.scss';
+import './StateFXAnalysisTool.scss';
 import './ProbabilityPredictionCard.scss';
 import './RecentTicksList.scss';
 import './LoadingSkeleton.scss';
@@ -73,11 +73,11 @@ const MARKETS = [
     { value: '1HZ100V', label: 'Volatility 100 (1s)' },
 ];
 
-interface ZeusAnalysisToolProps {
+interface StateFXAnalysisToolProps {
     onNavigateToFreeBots?: () => void;
 }
 
-export const ZeusAnalysisTool: React.FC<ZeusAnalysisToolProps> = ({ onNavigateToFreeBots }) => {
+export const StateFXAnalysisTool: React.FC<StateFXAnalysisToolProps> = ({ onNavigateToFreeBots }) => {
     const [selectedMarket, setSelectedMarket] = useState('R_50');
     const [ticks, setTicks] = useState<TickData[]>([]);
     const [currentPrice, setCurrentPrice] = useState<number | null>(null);
@@ -281,7 +281,7 @@ export const ZeusAnalysisTool: React.FC<ZeusAnalysisToolProps> = ({ onNavigateTo
         setError(null);
 
         try {
-            const ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=110800');
+            const ws = new WebSocket('wss://ws.binaryws.com/websockets/v3?app_id=68794');
             wsRef.current = ws;
 
             // Set connection timeout - reduced for faster detection
@@ -334,7 +334,7 @@ export const ZeusAnalysisTool: React.FC<ZeusAnalysisToolProps> = ({ onNavigateTo
 
                     if (data.error) {
                         const errorMessage = `API Error: ${data.error.message}`;
-                        logError('ZeusAnalysisTool', errorMessage, 'high', {
+                        logError('StateFXAnalysisTool', errorMessage, 'high', {
                             errorCode: data.error.code,
                             market: selectedMarket,
                         });
@@ -394,7 +394,7 @@ export const ZeusAnalysisTool: React.FC<ZeusAnalysisToolProps> = ({ onNavigateTo
                                     }
                                 } catch (error) {
                                     logError(
-                                        'ZeusAnalysisTool',
+                                        'StateFXAnalysisTool',
                                         error instanceof Error ? error : new Error('Failed to check for alerts'),
                                         'medium',
                                         {
@@ -445,7 +445,7 @@ export const ZeusAnalysisTool: React.FC<ZeusAnalysisToolProps> = ({ onNavigateTo
                     }
                 } catch (error) {
                     logError(
-                        'ZeusAnalysisTool',
+                        'StateFXAnalysisTool',
                         error instanceof Error ? error : new Error('Failed to parse WebSocket message'),
                         'medium',
                         {
@@ -461,7 +461,7 @@ export const ZeusAnalysisTool: React.FC<ZeusAnalysisToolProps> = ({ onNavigateTo
                 clearTimeout(connectionTimeout);
                 console.error('❌ WebSocket error:', error);
                 logError(
-                    'ZeusAnalysisTool',
+                    'StateFXAnalysisTool',
                     error instanceof Error ? error : new Error('WebSocket connection error'),
                     'high',
                     {
@@ -481,7 +481,7 @@ export const ZeusAnalysisTool: React.FC<ZeusAnalysisToolProps> = ({ onNavigateTo
             ws.onclose = event => {
                 clearTimeout(connectionTimeout);
                 console.log('🔌 WebSocket closed:', event.code, event.reason);
-                logError('ZeusAnalysisTool', `WebSocket connection closed: ${event.code} - ${event.reason}`, 'medium', {
+                logError('StateFXAnalysisTool', `WebSocket connection closed: ${event.code} - ${event.reason}`, 'medium', {
                     market: selectedMarket,
                     tickCount,
                     wasClean: event.wasClean,

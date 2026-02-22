@@ -1,5 +1,5 @@
 import React from 'react';
-import { ZeusAnalysisTool } from '@/components/zeus-analysis/ZeusAnalysisTool';
+import { StateFXAnalysisTool } from '@/components/state-fx-analysis/StateFXAnalysisTool';
 import { usePasswordProtection } from '@/hooks/usePasswordProtection';
 import { PasswordProtection } from './PasswordProtection';
 
@@ -20,5 +20,5 @@ export const ProtectedZeusAnalysis: React.FC<ProtectedZeusAnalysisProps> = ({ on
         );
     }
 
-    return <ZeusAnalysisTool onNavigateToFreeBots={onNavigateToFreeBots} />;
+    return <StateFXAnalysisTool onNavigateToFreeBots={onNavigateToFreeBots} />;
 };

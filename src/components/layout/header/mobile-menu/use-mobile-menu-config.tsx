@@ -43,7 +43,7 @@ const useMobileMenuConfig = (client?: RootStore['client']) => {
             {
                 as: 'a',
                 href: 'https://mozaictradinghub.com',
-                label: localize('ZEUS TRADING HUB'),
+                label: localize('STATE FX'),
                 LeftComponent: BrandDerivLogoCoralIcon,
             },
             {

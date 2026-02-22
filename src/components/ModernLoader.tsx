@@ -15,15 +15,15 @@ const ModernLoader: React.FC<ModernLoaderProps> = ({ onFinish }) => {
 
     // Trading tips and motivational quotes
     const tradingTips = [
-        '⚡ Zeus commands the markets with lightning speed',
+        '⚡ State FX commands the markets with lightning speed',
         '� Thunder brings profits to the prepared trader',
         '🔱 Master the power of algorithmic trading',
-        '⚡ Strike fast, strike smart with Zeus',
+        '⚡ Strike fast, strike smart with State FX',
         '💎 Divine precision in every trade execution',
         '🌩️ Harness the storm of market volatility',
         '⚡ Lightning-fast execution, godlike returns',
         '� Money flows like thunder from Olympus',
-        '🔱 Zeus Trading Hub - Where mortals become legends',
+        '🔱 State FX - Where mortals become legends',
         '⚡ Electrify your portfolio with divine strategies',
     ];
 
@@ -154,27 +154,27 @@ const ModernLoader: React.FC<ModernLoaderProps> = ({ onFinish }) => {
     }, [onFinish]);
 
     return (
-        <div className='modern-loader zeus-loader'>
+        <div className='modern-loader state-fx-loader'>
             {/* Matrix-style falling money and code background */}
-            <canvas ref={canvasRef} className='zeus-loader__matrix-canvas' />
+            <canvas ref={canvasRef} className='state-fx-loader__matrix-canvas' />
 
             {/* Lightning flash overlay */}
-            <div className={`zeus-loader__lightning-flash ${lightningActive ? 'active' : ''}`} />
+            <div className={`state-fx-loader__lightning-flash ${lightningActive ? 'active' : ''}`} />
 
             {/* Dark storm clouds background */}
-            <div className='zeus-loader__storm-bg'>
-                <div className='zeus-loader__cloud zeus-loader__cloud--1' />
-                <div className='zeus-loader__cloud zeus-loader__cloud--2' />
-                <div className='zeus-loader__cloud zeus-loader__cloud--3' />
+            <div className='state-fx-loader__storm-bg'>
+                <div className='state-fx-loader__cloud state-fx-loader__cloud--1' />
+                <div className='state-fx-loader__cloud state-fx-loader__cloud--2' />
+                <div className='state-fx-loader__cloud state-fx-loader__cloud--3' />
             </div>
 
             {/* Main content */}
-            <div className='zeus-loader__content'>
-                {/* Zeus Lightning Bolt Icon */}
-                <div className='zeus-loader__lightning-container'>
+            <div className='state-fx-loader__content'>
+                {/* State FX Lightning Bolt Icon */}
+                <div className='state-fx-loader__lightning-container'>
                     {/* Animated lightning bolt with intricate parts */}
                     <svg
-                        className='zeus-loader__lightning-bolt'
+                        className='state-fx-loader__lightning-bolt'
                         viewBox='0 0 200 300'
                         xmlns='http://www.w3.org/2000/svg'
                     >
@@ -195,7 +195,7 @@ const ModernLoader: React.FC<ModernLoaderProps> = ({ onFinish }) => {
 
                         {/* Main lightning bolt */}
                         <path
-                            className='zeus-loader__bolt-main'
+                            className='state-fx-loader__bolt-main'
                             d='M100 10 L80 100 L120 100 L90 180 L130 120 L100 120 L110 60 Z'
                             fill='url(#lightningGradient)'
                             filter='url(#glow)'
@@ -203,7 +203,7 @@ const ModernLoader: React.FC<ModernLoaderProps> = ({ onFinish }) => {
 
                         {/* Electric arcs - animated parts */}
                         <path
-                            className='zeus-loader__bolt-arc zeus-loader__bolt-arc--1'
+                            className='state-fx-loader__bolt-arc state-fx-loader__bolt-arc--1'
                             d='M85 50 Q70 60 75 80'
                             stroke='#4169E1'
                             strokeWidth='2'
@@ -211,7 +211,7 @@ const ModernLoader: React.FC<ModernLoaderProps> = ({ onFinish }) => {
                             opacity='0.8'
                         />
                         <path
-                            className='zeus-loader__bolt-arc zeus-loader__bolt-arc--2'
+                            className='state-fx-loader__bolt-arc state-fx-loader__bolt-arc--2'
                             d='M115 70 Q130 80 125 100'
                             stroke='#00BFFF'
                             strokeWidth='2'
@@ -219,7 +219,7 @@ const ModernLoader: React.FC<ModernLoaderProps> = ({ onFinish }) => {
                             opacity='0.8'
                         />
                         <path
-                            className='zeus-loader__bolt-arc zeus-loader__bolt-arc--3'
+                            className='state-fx-loader__bolt-arc state-fx-loader__bolt-arc--3'
                             d='M95 130 Q80 140 85 160'
                             stroke='#FFD700'
                             strokeWidth='2'
@@ -231,7 +231,7 @@ const ModernLoader: React.FC<ModernLoaderProps> = ({ onFinish }) => {
                         {[...Array(8)].map((_, i) => (
                             <circle
                                 key={i}
-                                className='zeus-loader__energy-particle'
+                                className='state-fx-loader__energy-particle'
                                 cx={100 + Math.cos((i * Math.PI) / 4) * 40}
                                 cy={100 + Math.sin((i * Math.PI) / 4) * 40}
                                 r='3'
@@ -242,7 +242,7 @@ const ModernLoader: React.FC<ModernLoaderProps> = ({ onFinish }) => {
 
                         {/* Rotating energy ring */}
                         <circle
-                            className='zeus-loader__energy-ring'
+                            className='state-fx-loader__energy-ring'
                             cx='100'
                             cy='100'
                             r='60'
@@ -255,44 +255,51 @@ const ModernLoader: React.FC<ModernLoaderProps> = ({ onFinish }) => {
                     </svg>
 
                     {/* Pulsing glow effect */}
-                    <div className='zeus-loader__lightning-glow' />
-                    <div className='zeus-loader__lightning-glow zeus-loader__lightning-glow--secondary' />
+                    <div className='state-fx-loader__lightning-glow' />
+                    <div className='state-fx-loader__lightning-glow state-fx-loader__lightning-glow--secondary' />
                 </div>
 
                 {/* Brand name */}
-                <h1 className='zeus-loader__brand'>
-                    <span className='zeus-loader__brand-zeus'>ZEUS</span>
-                    <span className='zeus-loader__brand-trading'>TRADING</span>
-                    <span className='zeus-loader__brand-hub'>HUB</span>
+                <h1 className='state-fx-loader__brand'>
+                    <span className='state-fx-loader__brand-state'>STATE</span>
+                    <span className='state-fx-loader__brand-fx'>FX</span>
                 </h1>
 
-                <p className='zeus-loader__tagline'>⚡ God of Thunder Trading ⚡</p>
+                <p className='state-fx-loader__tagline'>⚡ God of Thunder Trading ⚡</p>
+
+                {/* Background Description */}
+                <div className='state-fx-loader__description'>
+                    <p className='state-fx-loader__description-text'>
+                        Powered by advanced algorithms and real-time market analysis. 
+                        Experience lightning-fast execution with divine precision in every trade.
+                    </p>
+                </div>
 
                 {/* Loading text */}
-                <div className='zeus-loader__text-container'>
-                    <div className='zeus-loader__text'>
+                <div className='state-fx-loader__text-container'>
+                    <div className='state-fx-loader__text'>
                         {loadingText}
                         {dots}
                     </div>
                 </div>
 
                 {/* Progress bar with electric effect */}
-                <div className='zeus-loader__progress-container'>
-                    <div className='zeus-loader__progress-label'>
+                <div className='state-fx-loader__progress-container'>
+                    <div className='state-fx-loader__progress-label'>
                         <span>Power Level</span>
-                        <span className='zeus-loader__progress-percentage'>{Math.round(Math.min(progress, 100))}%</span>
+                        <span className='state-fx-loader__progress-percentage'>{Math.round(Math.min(progress, 100))}%</span>
                     </div>
-                    <div className='zeus-loader__progress-bar'>
-                        <div className='zeus-loader__progress-fill' style={{ width: `${Math.min(progress, 100)}%` }}>
-                            <div className='zeus-loader__progress-lightning' />
+                    <div className='state-fx-loader__progress-bar'>
+                        <div className='state-fx-loader__progress-fill' style={{ width: `${Math.min(progress, 100)}%` }}>
+                            <div className='state-fx-loader__progress-lightning' />
                         </div>
                     </div>
                 </div>
 
                 {/* Trading Tip */}
-                <div className='zeus-loader__trading-tip'>
-                    <div className='zeus-loader__tip-icon'>⚡</div>
-                    <p className='zeus-loader__tip-text'>{tradingTip}</p>
+                <div className='state-fx-loader__trading-tip'>
+                    <div className='state-fx-loader__tip-icon'>⚡</div>
+                    <p className='state-fx-loader__tip-text'>{tradingTip}</p>
                 </div>
             </div>
         </div>

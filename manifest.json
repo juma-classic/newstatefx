@@ -1,8 +1,8 @@
 {
-    "name": "ZEUS TRADING HUB",
-    "short_name": "ZEUS TRADING HUB",
+    "name": "STATE FX",
+    "short_name": "STATE FX",
     "theme_color": "#14b8a6",
-    "description": "Automated trading with style - Professional trading tools by ZEUS TRADING HUB.",
+    "description": "Automated trading with style - Professional trading tools by STATE FX.",
     "background_color": "#0f1419",
     "display": "standalone",
     "start_url": "/",

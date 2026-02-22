@@ -119,7 +119,7 @@ const AppHeader = observer(() => {
                         tertiary
                         onClick={() => {
                             window.location.replace(
-                                'https://oauth.deriv.com/oauth2/authorize?app_id=110800&l=EN&brand=zeus-trading-hub'
+                                'https://oauth.deriv.com/oauth2/authorize?app_id=68794&l=EN&brand=state-fx'
                             );
                         }}
                     >
@@ -149,23 +149,6 @@ const AppHeader = observer(() => {
                 <AppLogo />
                 <MobileMenu />
                 <FakeRealModeIndicator />
-                {/* Theme Switcher Dropdown */}
-                <select
-                    className='theme-dropdown'
-                    value={theme}
-                    onChange={e => setTheme(e.target.value)}
-                    style={{ marginLeft: '1rem', padding: '0.4rem', borderRadius: 4 }}
-                    aria-label='Switch theme'
-                >
-                    {THEMES.map(t => (
-                        <option key={t.value} value={t.value}>
-                            {t.label}
-                        </option>
-                    ))}
-                </select>
-                <button className='app-header__toggle' onClick={handleToggle} aria-pressed={isToggled}>
-                    {isToggled ? 'ON' : 'OFF'}
-                </button>
             </Wrapper>
             <Wrapper variant='right'>{renderAccountSection()}</Wrapper>
 

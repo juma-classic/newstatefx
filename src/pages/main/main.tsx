@@ -18,6 +18,8 @@ import { useStore } from '@/hooks/useStore';
 import { Localize, localize } from '@deriv-com/translations';
 import { useDevice } from '@deriv-com/ui';
 import { BotLoadingErrorHandler, withBotLoadingErrorHandling } from '@/utils/bot-loading-error-handler';
+import { getBotIcon } from '@/utils/bot-icon-generator';
+import '@/utils/bot-icon-animations.scss';
 import RunPanel from '../../components/run-panel';
 import ChartModal from '../chart/chart-modal';
 import Dashboard from '../dashboard';
@@ -1991,7 +1993,7 @@ const AppWrapper = observer(() => {
                                 }}
                             >
                                 <iframe
-                                    src='/www.osamtradinghub.com/alltools-ten.vercel.app/index.html'
+                                    src='/bot-analysis-tool-belex/index.html'
                                     title='HacksAnalysis - Advanced Trading Tools'
                                     style={{
                                         width: '100%',
@@ -2691,78 +2693,57 @@ const AppWrapper = observer(() => {
                                                 key={index}
                                                 className='free-bot-item'
                                                 style={{
-                                                    background: '#f8f9fa',
-                                                    borderRadius: '16px',
-                                                    padding: '1.5rem',
+                                                    background: 'linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%)',
+                                                    borderRadius: '20px',
+                                                    padding: '2rem 1.5rem',
                                                     display: 'flex',
                                                     flexDirection: 'column',
-                                                    gap: '1rem',
-                                                    boxShadow: '0 2px 8px rgba(0, 0, 0, 0.08)',
-                                                    transition: 'all 0.3s ease',
+                                                    gap: '1.25rem',
+                                                    boxShadow: '0 4px 12px rgba(0, 0, 0, 0.06)',
+                                                    transition: 'all 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
                                                     cursor: 'pointer',
-                                                    border: '2px solid #e0e0e0',
+                                                    border: '1px solid #e5e7eb',
+                                                    position: 'relative',
+                                                    overflow: 'hidden',
                                                 }}
                                                 onMouseEnter={e => {
-                                                    e.currentTarget.style.transform = 'translateY(-8px) scale(1.02)';
+                                                    e.currentTarget.style.transform = 'translateY(-6px)';
                                                     e.currentTarget.style.boxShadow =
-                                                        '0 12px 24px rgba(13, 148, 136, 0.2)';
+                                                        '0 16px 32px rgba(13, 148, 136, 0.15)';
                                                     e.currentTarget.style.borderColor = '#0d9488';
-                                                    e.currentTarget.style.background = '#ffffff';
                                                 }}
                                                 onMouseLeave={e => {
-                                                    e.currentTarget.style.transform = 'translateY(0) scale(1)';
-                                                    e.currentTarget.style.boxShadow = '0 2px 8px rgba(0, 0, 0, 0.08)';
-                                                    e.currentTarget.style.borderColor = '#e0e0e0';
-                                                    e.currentTarget.style.background = '#f8f9fa';
+                                                    e.currentTarget.style.transform = 'translateY(0)';
+                                                    e.currentTarget.style.boxShadow = '0 4px 12px rgba(0, 0, 0, 0.06)';
+                                                    e.currentTarget.style.borderColor = '#e5e7eb';
                                                 }}
                                                 onClick={() => handleBotClick(bot)}
                                             >
+                                                {/* Icon */}
                                                 <div
+                                                    className='bot-icon-container'
                                                     style={{
+                                                        width: '64px',
+                                                        height: '64px',
+                                                        borderRadius: '16px',
                                                         display: 'flex',
                                                         alignItems: 'center',
-                                                        gap: '1rem',
-                                                        width: '100%',
+                                                        justifyContent: 'center',
                                                         pointerEvents: 'none',
                                                     }}
                                                 >
-                                                    <div
-                                                        style={{
-                                                            width: '40px',
-                                                            height: '40px',
-                                                            borderRadius: '8px',
-                                                            background:
-                                                                'linear-gradient(135deg, #0d9488 0%, #14b8a6 100%)',
-                                                            display: 'flex',
-                                                            alignItems: 'center',
-                                                            justifyContent: 'center',
-                                                            fontSize: '1.5rem',
-                                                            flexShrink: 0,
-                                                        }}
-                                                    >
-                                                        🤖
-                                                    </div>
-                                                    <h3
-                                                        style={{
-                                                            margin: 0,
-                                                            color: '#1a1a2e',
-                                                            fontSize: '1.1rem',
-                                                            fontWeight: '600',
-                                                            flex: 1,
-                                                            whiteSpace: 'nowrap',
-                                                            overflow: 'hidden',
-                                                            textOverflow: 'ellipsis',
-                                                        }}
-                                                    >
-                                                        {bot.title || 'Untitled Bot'}
-                                                    </h3>
+                                                    {getBotIcon(bot.title || 'default')}
                                                 </div>
-                                                <p
+
+                                                {/* Bot Name */}
+                                                <h3
                                                     style={{
                                                         margin: 0,
-                                                        color: '#6c757d',
-                                                        fontSize: '0.9rem',
-                                                        lineHeight: '1.5',
+                                                        color: '#111827',
+                                                        fontSize: '1.15rem',
+                                                        fontWeight: '700',
+                                                        lineHeight: '1.4',
+                                                        minHeight: '2.8rem',
                                                         display: '-webkit-box',
                                                         WebkitLineClamp: 2,
                                                         WebkitBoxOrient: 'vertical',
@@ -2770,39 +2751,69 @@ const AppWrapper = observer(() => {
                                                         pointerEvents: 'none',
                                                     }}
                                                 >
-                                                    Click to load this bot into your workspace
-                                                </p>
+                                                    {bot.title || 'Untitled Bot'}
+                                                </h3>
+
+                                                {/* Load Button */}
+                                                <button
+                                                    style={{
+                                                        width: '100%',
+                                                        padding: '0.875rem 1.5rem',
+                                                        background:
+                                                            'linear-gradient(135deg, #0d9488 0%, #14b8a6 100%)',
+                                                        color: '#ffffff',
+                                                        border: 'none',
+                                                        borderRadius: '12px',
+                                                        fontSize: '0.95rem',
+                                                        fontWeight: '600',
+                                                        cursor: 'pointer',
+                                                        transition: 'all 0.2s ease',
+                                                        boxShadow: '0 4px 12px rgba(13, 148, 136, 0.3)',
+                                                        display: 'flex',
+                                                        alignItems: 'center',
+                                                        justifyContent: 'center',
+                                                        gap: '0.5rem',
+                                                        textTransform: 'none',
+                                                        letterSpacing: '0.3px',
+                                                    }}
+                                                    onMouseEnter={e => {
+                                                        e.currentTarget.style.background =
+                                                            'linear-gradient(135deg, #0f766e 0%, #0d9488 100%)';
+                                                        e.currentTarget.style.transform = 'scale(1.02)';
+                                                        e.currentTarget.style.boxShadow =
+                                                            '0 6px 16px rgba(13, 148, 136, 0.4)';
+                                                    }}
+                                                    onMouseLeave={e => {
+                                                        e.currentTarget.style.background =
+                                                            'linear-gradient(135deg, #0d9488 0%, #14b8a6 100%)';
+                                                        e.currentTarget.style.transform = 'scale(1)';
+                                                        e.currentTarget.style.boxShadow =
+                                                            '0 4px 12px rgba(13, 148, 136, 0.3)';
+                                                    }}
+                                                >
+                                                    Load Bot
+                                                </button>
+
+                                                {/* Free Badge */}
                                                 <div
                                                     style={{
-                                                        display: 'flex',
-                                                        justifyContent: 'space-between',
-                                                        alignItems: 'center',
-                                                        marginTop: 'auto',
-                                                        paddingTop: '0.5rem',
-                                                        borderTop: '1px solid #e0e0e0',
+                                                        position: 'absolute',
+                                                        top: '1rem',
+                                                        right: '1rem',
+                                                        background:
+                                                            'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                                                        color: '#ffffff',
+                                                        padding: '0.375rem 0.875rem',
+                                                        borderRadius: '20px',
+                                                        fontSize: '0.75rem',
+                                                        fontWeight: '700',
+                                                        textTransform: 'uppercase',
+                                                        letterSpacing: '0.5px',
+                                                        boxShadow: '0 2px 8px rgba(16, 185, 129, 0.3)',
                                                         pointerEvents: 'none',
                                                     }}
                                                 >
-                                                    <span
-                                                        style={{
-                                                            fontSize: '0.75rem',
-                                                            color: '#0d9488',
-                                                            fontWeight: '600',
-                                                            textTransform: 'uppercase',
-                                                            letterSpacing: '0.5px',
-                                                        }}
-                                                    >
-                                                        Free
-                                                    </span>
-                                                    <span
-                                                        style={{
-                                                            fontSize: '0.85rem',
-                                                            color: '#0d9488',
-                                                            fontWeight: '500',
-                                                        }}
-                                                    >
-                                                        Load →
-                                                    </span>
+                                                    Free
                                                 </div>
                                             </li>
                                         ))

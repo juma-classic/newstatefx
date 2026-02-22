@@ -68,6 +68,49 @@
         display: flex;
         align-items: center;
         height: 40px;
+        position: relative;
+        transition: transform 0.3s ease, opacity 0.3s ease;
+        
+        &--retracted {
+            transform: translateX(calc(100% - 40px));
+            
+            .animation__run-button,
+            .animation__stop-button,
+            .animation__container {
+                opacity: 0;
+                pointer-events: none;
+            }
+        }
+    }
+
+    &__toggle-button {
+        position: absolute;
+        left: -30px;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, #0d9488 0%, #14b8a6 100%);
+        border: none;
+        color: white;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 12px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+        transition: all 0.3s ease;
+        z-index: 10;
+        
+        &:hover {
+            background: linear-gradient(135deg, #0a7a6f 0%, #10a896 100%);
+            transform: translateY(-50%) scale(1.1);
+        }
+        
+        &:active {
+            transform: translateY(-50%) scale(0.95);
+        }
     }
 
     &__overlay {
@@ -81,6 +124,7 @@
         border-start-end-radius: 0 !important;
         border-end-end-radius: 0 !important;
         background: linear-gradient(135deg, #0d9488 0%, #14b8a6 50%, #2dd4bf 100%) !important;
+        transition: opacity 0.3s ease;
 
         &:hover {
             background: linear-gradient(135deg, #0a7a6f 0%, #10a896 50%, #20c5ab 100%) !important;
@@ -93,6 +137,7 @@
         border-start-end-radius: 0 !important;
         border-end-end-radius: 0 !important;
         background-color: var(--button-primary-default);
+        transition: opacity 0.3s ease;
 
         &:hover {
             background-color: var(--button-primary-default) !important;

@@ -4,7 +4,7 @@
  */
 
 import React, { useState } from 'react';
-import { EnhancedDigitCircle } from '../zeus-analysis/EnhancedDigitCircle';
+import { EnhancedDigitCircle } from '../state-fx-analysis/EnhancedDigitCircle';
 import { FastDigitClickHandler } from './FastDigitClickHandler';
 import { useFastPatelBotLoader } from '../../hooks/useFastPatelBotLoader';
 import './DigitClickIntegrationExample.scss';

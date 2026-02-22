@@ -1,5 +1,5 @@
-// Zeus Trading Hub Loader - God of Thunder Theme
-.zeus-loader {
+// State FX Loader - God of Thunder Theme
+.state-fx-loader {
     position: fixed;
     top: 0;
     left: 0;
@@ -163,33 +163,35 @@
 
     // Brand name
     &__brand {
-        font-size: 3.5rem;
+        font-size: 4rem;
         font-weight: 900;
         text-align: center;
         margin: 0;
         display: flex;
-        flex-direction: column;
-        gap: 0.2rem;
+        gap: 1rem;
+        align-items: center;
         text-transform: uppercase;
-        letter-spacing: 0.1em;
+        letter-spacing: 0.15em;
     }
 
-    &__brand-zeus {
+    &__brand-state {
         color: #FFD700;
-        text-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 40px rgba(255, 215, 0, 0.5);
+        text-shadow: 
+            0 0 20px rgba(255, 215, 0, 0.8), 
+            0 0 40px rgba(255, 215, 0, 0.5),
+            0 0 60px rgba(255, 215, 0, 0.3);
         animation: textGlow 2s infinite alternate;
+        font-size: 4rem;
     }
 
-    &__brand-trading {
+    &__brand-fx {
         color: #4169E1;
-        font-size: 2rem;
-        text-shadow: 0 0 15px rgba(65, 105, 225, 0.8);
-    }
-
-    &__brand-hub {
-        color: #00BFFF;
-        font-size: 2rem;
-        text-shadow: 0 0 15px rgba(0, 191, 255, 0.8);
+        font-size: 4rem;
+        text-shadow: 
+            0 0 20px rgba(65, 105, 225, 0.8),
+            0 0 40px rgba(65, 105, 225, 0.5),
+            0 0 60px rgba(0, 191, 255, 0.3);
+        animation: textGlowBlue 2s infinite alternate;
     }
 
     &__tagline {
@@ -200,6 +202,28 @@
         margin: 0;
         text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
         animation: taglinePulse 3s infinite ease-in-out;
+    }
+
+    // Background Description
+    &__description {
+        max-width: 500px;
+        margin: 1.5rem 0;
+        padding: 1rem 1.5rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 12px;
+        border: 1px solid rgba(255, 215, 0, 0.2);
+        backdrop-filter: blur(10px);
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    &__description-text {
+        color: #e0e0e0;
+        font-size: 0.95rem;
+        line-height: 1.6;
+        text-align: center;
+        margin: 0;
+        text-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+        letter-spacing: 0.3px;
     }
 
     // Loading text
@@ -383,6 +407,15 @@
     }
 }
 
+@keyframes textGlowBlue {
+    0% {
+        text-shadow: 0 0 20px rgba(65, 105, 225, 0.8), 0 0 40px rgba(65, 105, 225, 0.5);
+    }
+    100% {
+        text-shadow: 0 0 30px rgba(65, 105, 225, 1), 0 0 60px rgba(0, 191, 255, 0.8);
+    }
+}
+
 @keyframes taglinePulse {
     0%,
     100% {
@@ -422,23 +455,35 @@
 
 // Responsive design
 @media (max-width: 768px) {
-    .zeus-loader {
+    .state-fx-loader {
         &__lightning-container {
             width: 150px;
             height: 225px;
         }
 
         &__brand {
-            font-size: 2.5rem;
+            font-size: 3rem;
+            gap: 0.5rem;
         }
 
-        &__brand-trading,
-        &__brand-hub {
-            font-size: 1.5rem;
+        &__brand-state,
+        &__brand-fx {
+            font-size: 3rem;
         }
 
         &__tagline {
             font-size: 1rem;
+        }
+
+        &__description {
+            max-width: 90%;
+            padding: 0.75rem 1rem;
+            margin: 1rem 0;
+        }
+
+        &__description-text {
+            font-size: 0.85rem;
+            line-height: 1.5;
         }
 
         &__text {

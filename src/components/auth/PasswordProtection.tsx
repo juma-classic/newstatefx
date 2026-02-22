@@ -89,10 +89,10 @@ export const PasswordProtection: React.FC<PasswordProtectionProps> = ({
 
                 <div className='password-protection__footer'>
                     <p className='password-protection__hint'>
-                        💡{' '}
+                        ⚡{' '}
                         {subtitle.includes('premium')
-                            ? 'Contact Elvis Trades for premium access'
-                            : 'Contact Elvis Trades for access credentials'}
+                            ? 'Contact State FX for premium access'
+                            : 'Contact State FX for access credentials'}
                     </p>
                 </div>
             </div>

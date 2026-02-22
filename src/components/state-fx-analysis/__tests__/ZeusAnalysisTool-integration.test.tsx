@@ -10,7 +10,7 @@ import { calculateProbabilities } from '../../../utils/probability-calculator';
 import { createTradeSignal } from '../../../utils/trade-signal-generator';
 import '@testing-library/jest-dom';
 
-describe('ZeusAnalysisTool - Integration Tests', () => {
+describe('StateFXAnalysisTool - Integration Tests', () => {
   beforeEach(() => {
     jest.clearAllMocks();
     localStorage.clear();

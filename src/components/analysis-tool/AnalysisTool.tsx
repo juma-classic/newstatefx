@@ -6,7 +6,7 @@ import './AnalysisTool.scss';
 
 // Lazy load the integrated components
 const MetatronAnalysisTool = lazy(() =>
-    import('@/components/zeus-analysis/ZeusAnalysisTool').then(m => ({ default: m.ZeusAnalysisTool }))
+    import('@/components/state-fx-analysis/StateFXAnalysisTool').then(m => ({ default: m.StateFXAnalysisTool }))
 );
 const AdvancedAlgo = lazy(() => import('@/pages/advanced-algo'));
 const ElvisZonePage = lazy(() => import('@/pages/elvis-zone'));

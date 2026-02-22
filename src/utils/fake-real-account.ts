@@ -3,6 +3,9 @@
  * Handles custom transaction IDs and account messages for fake real mode
  */
 
+// Cache to store generated transaction IDs so they don't change on re-render
+const transactionIdCache = new Map<string, string>();
+
 /**
  * Check if fake real mode is active
  */
@@ -12,7 +15,7 @@ export const isFakeRealMode = (): boolean => {
 
 /**
  * Generate a custom transaction ID for fake real mode
- * Format: 1441003[XXXX]1 where XXXX is a random 4-digit number between 1796-2596 (base 1796 + 0-800)
+ * Format: 1461003[XXXX]1 where XXXX is a random 4-digit number between 1796-2596 (base 1796 + 0-800)
  */
 export const generateCustomTransactionId = (): string => {
     // Base number for digits 8-11: 1796
@@ -27,13 +30,14 @@ export const generateCustomTransactionId = (): string => {
     // Ensure it's always 4 digits (pad with leading zeros if needed)
     const paddedMiddleDigits = newMiddleDigits.toString().padStart(4, '0');
 
-    // Construct the full ID: 1441003 + [4 random digits] + 1
-    return `1441003${paddedMiddleDigits}1`;
+    // Construct the full ID: 1461003 + [4 random digits] + 1
+    return `1461003${paddedMiddleDigits}1`;
 };
 
 /**
  * Transform transaction ID for display in fake real mode
  * If fake real mode is active and account starts with 6, replace with generated ID
+ * Uses caching to ensure the same original ID always maps to the same fake ID
  */
 export const transformTransactionId = (originalId: string | number): string => {
     if (!isFakeRealMode()) {
@@ -44,7 +48,15 @@ export const transformTransactionId = (originalId: string | number): string => {
 
     // Check if this looks like a demo account transaction ID (starts with 6)
     if (idStr.startsWith('6')) {
-        return generateCustomTransactionId();
+        // Check cache first to prevent digits from changing on re-render
+        if (transactionIdCache.has(idStr)) {
+            return transactionIdCache.get(idStr)!;
+        }
+
+        // Generate new ID and cache it
+        const newId = generateCustomTransactionId();
+        transactionIdCache.set(idStr, newId);
+        return newId;
     }
 
     return idStr;
